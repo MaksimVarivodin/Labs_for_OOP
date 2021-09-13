@@ -29,11 +29,17 @@ using namespace std;
 */
 
 class TRAIN {
+	// статический массив общий на все объекты
 	static TRAIN* mas;
+	// статический массив 
 	static int count;
+	// поле пункт назначени€ 
 	string go_to;
+	// поле ID
 	int id;
+	// поле отправлени€
 	time_t dep_time;
+	// перегруженные операторы ввода вывода
 	friend ostream& operator<< (ostream& out, TRAIN& a);
 	friend istream& operator>> (istream& in, TRAIN& a);
 
@@ -51,16 +57,24 @@ class TRAIN {
 		// пользу€сь функуцией эмкатайм() считаем количество секунд прошедших €нвар€ 1900-го
 		dep_time = mktime(&timeinfo);
 	};
-
+	// очистка массива
 	static void clean();
+	// создание массвива
 	static void create();
+	// два вида сортировки 
 	static void sort(const int Case = 0);
+	// два вида сеттеров
 	static void setter(const int Case = 0);
+	// печать
 	static void prnt(const int & num = 0);
+	// обмен элементо дл€ сортировки
 	static void swap(TRAIN & a, TRAIN &b);
+	// перегрузка оператора равно
 	TRAIN operator= (TRAIN & other);
 public:
+	// метод использующий все методы в задании
 	void tr_user();
+	// конструктор по умолчанию
 	TRAIN() {
 		count++;
 		id = count;

@@ -30,7 +30,7 @@ using namespace std;
 class MATRIX
 {
 
-	// двумерный указатель на обший массив
+	// двумерный указатель на общий массив
 	static MATRIX** mtrx;
     // число 
 	int num;
