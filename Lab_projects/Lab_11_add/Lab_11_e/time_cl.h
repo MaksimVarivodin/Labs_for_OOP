@@ -25,13 +25,23 @@ using namespace std;
 */
 class TIME
 {
+	// переменная количества секунд
 	time_t sec;
-	// сеттер
-	
-	tm getter();
-	time_t difference();
+public:
+	TIME()
+	{
+		sec = 0;
+	}
+	// геттер	
+	time_t getter();
+	// разность
+	TIME substract(TIME & other);
+	// больше меньше
 	bool is_bigger(const TIME & other);
-	int angle_calc(const TIME & other);
-	friend ostream& operator<< (ostream & out, TIME & a);
+	// расчет угла
+	double angle_calc();
+	// перегрузка оператора вывода
+	friend ostream& operator<< (ostream& out, TIME& a);
+	// перегрузка оператора ввода
 	friend istream& operator>> (istream & in, TIME & a);
 };
