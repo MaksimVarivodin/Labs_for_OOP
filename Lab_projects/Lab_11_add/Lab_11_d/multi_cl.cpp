@@ -133,7 +133,6 @@ ostream&  operator<<(ostream & out, const MULTIPLICITY & a) {
 		if (i>0)cout << setw(4);
 		cout << i + 1;
 	}
-		
 	for (int i = 0; i < a.count; i++)
 	{
 		if ((i + 1) % COL != 1) {

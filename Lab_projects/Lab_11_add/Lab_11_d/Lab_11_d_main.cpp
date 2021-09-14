@@ -62,7 +62,22 @@ int main() {
 			cout << "MERGE: "<< endl << b.merge(d);
 			break;
 		case 3:
-			cout << "SUBSTRACT:  "<< endl <<b.substract(d);
+			cout << "SUBSTRACT - choose how\n";
+			cout << "1 - [ b - d ]"<< endl;
+			cout << "2 - [ d - b ]" << endl;
+			int k2;
+			cin >> k2;
+			switch (k2)
+			{
+			case 1:
+				cout << "SUBSTRACT:  b - d" << endl << b.substract(d);
+				break;
+			case 2:
+				cout << "SUBSTRACT:  d - b" << endl << d.substract(b);
+				break;
+			default:cout << "Retry enter the numbers"<< endl;
+				break;
+			}
 			break;
 		case 4:
 			cout<<"SYMMETRIC DIIFERENCE: "<<endl << b.symmetric_dif(d);
