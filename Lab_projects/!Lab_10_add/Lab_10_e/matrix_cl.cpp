@@ -46,7 +46,7 @@ void MATRIX::cleaner()
 
 ostream & operator<<(ostream & out, MATRIX & a)
 {
-	// TODO: вставьте здесь оператор return
+	// TODO: РІСЃС‚Р°РІСЊС‚Рµ Р·РґРµСЃСЊ РѕРїРµСЂР°С‚РѕСЂ return
 	if (a.num < 10) {
 		cout << "0" << a.num << " ";
 	}
@@ -59,7 +59,7 @@ ostream & operator<<(ostream & out, MATRIX & a)
 
 istream& operator>>(istream& in, MATRIX& a)
 {
-	// TODO: вставьте здесь оператор return
+	// TODO: РІСЃС‚Р°РІСЊС‚Рµ Р·РґРµСЃСЊ РѕРїРµСЂР°С‚РѕСЂ return
 	cin >> a.num;
 	return in;
 
@@ -87,9 +87,9 @@ void MATRIX::search(const int & Case)
 	int min_y = 0;
 	int a[2] = { 0, 0 };
 	MATRIX ** buf = NULL;
-	// ввод координат для изменения элемента и начальной координаты копирования
+	// РІРІРѕРґ РєРѕРѕСЂРґРёРЅР°С‚ РґР»СЏ РёР·РјРµРЅРµРЅРёСЏ СЌР»РµРјРµРЅС‚Р° Рё РЅР°С‡Р°Р»СЊРЅРѕР№ РєРѕРѕСЂРґРёРЅР°С‚С‹ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
 	if(Case == 0 || Case == 1){
-		//  получение элемента по номеру
+		//  РїРѕР»СѓС‡РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РїРѕ РЅРѕРјРµСЂСѓ
 		cout << "Getting";
 		switch (Case)
 		{
@@ -113,7 +113,7 @@ void MATRIX::search(const int & Case)
 
 	switch (Case) {
 	case 0:
-		//  изменение элемента по введенным координатам
+		//  РёР·РјРµРЅРµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РїРѕ РІРІРµРґРµРЅРЅС‹Рј РєРѕРѕСЂРґРёРЅР°С‚Р°Рј
 		if ((min_y >= 0 && min_x >= 0) && (min_y < size_y && min_x < size_x))
 		{
 			cout << "Current element is: " << mtrx[min_y][min_x]<< endl;
@@ -130,7 +130,7 @@ void MATRIX::search(const int & Case)
 		break;
 	case 1:
 
-		// получение подматрицы по введенным данным
+		// РїРѕР»СѓС‡РµРЅРёРµ РїРѕРґРјР°С‚СЂРёС†С‹ РїРѕ РІРІРµРґРµРЅРЅС‹Рј РґР°РЅРЅС‹Рј
 		
 		if ((min_y >= 0 && min_x >= 0) && (min_y < size_y && min_x < size_x))
 		{
@@ -172,7 +172,7 @@ void MATRIX::search(const int & Case)
 		break;
 	default:
 
-		// просто поиск минимального элемента
+		// РїСЂРѕСЃС‚Рѕ РїРѕРёСЃРє РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р°
 		cout << "Searching for minimal element:" << endl;
 		for (int i = 0; i < size_y; i++)
 		{

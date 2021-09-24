@@ -1,5 +1,5 @@
 #include "multi_cl.h"
-// нахождение максимального значения
+// РЅР°С…РѕР¶РґРµРЅРёРµ РјР°РєСЃРёРјР°Р»СЊРЅРѕРіРѕ Р·РЅР°С‡РµРЅРёСЏ
 int MULTIPLICITY::max_val()
 {
 	cout << __FUNCTION__ << " returns ";
@@ -9,27 +9,27 @@ int MULTIPLICITY::max_val()
 			max = mltplct[i];		
 	return max;
 }
-// пересечение
+// РїРµСЂРµСЃРµС‡РµРЅРёРµ
 MULTIPLICITY MULTIPLICITY::intersection
 ( const MULTIPLICITY & b)
 {
 	int count = 0;
-	int* buf_arr = NULL;// создание массива чисел
+	int* buf_arr = NULL;// СЃРѕР·РґР°РЅРёРµ РјР°СЃСЃРёРІР° С‡РёСЃРµР»
 	
 	for (int i = 0; i < this->count; i++)
 	{
 		for (int j = 0; j < b.count; j++)
 		{
-			// если есть в обоих множествах
+			// РµСЃР»Рё РµСЃС‚СЊ РІ РѕР±РѕРёС… РјРЅРѕР¶РµСЃС‚РІР°С…
 			if (this->mltplct[i] == b.mltplct[j])
 			{
-				// то увеличиваем массив на 1 и записываем в него общее число
+				// С‚Рѕ СѓРІРµР»РёС‡РёРІР°РµРј РјР°СЃСЃРёРІ РЅР° 1 Рё Р·Р°РїРёСЃС‹РІР°РµРј РІ РЅРµРіРѕ РѕР±С‰РµРµ С‡РёСЃР»Рѕ
 				add_one_arr(buf_arr, count);
 				buf_arr[count - 1] = this->mltplct[i];
 			}
 		}
 	}
-	// создаем новое множество с известным количеством элементов
+	// СЃРѕР·РґР°РµРј РЅРѕРІРѕРµ РјРЅРѕР¶РµСЃС‚РІРѕ СЃ РёР·РІРµСЃС‚РЅС‹Рј РєРѕР»РёС‡РµСЃС‚РІРѕРј СЌР»РµРјРµРЅС‚РѕРІ
 	if (buf_arr != NULL) {
 		MULTIPLICITY A{ buf_arr, count };
 		delete[] buf_arr;
@@ -41,27 +41,27 @@ MULTIPLICITY MULTIPLICITY::intersection
 		return A;
 	}	
 }
-// разность
+// СЂР°Р·РЅРѕСЃС‚СЊ
 MULTIPLICITY MULTIPLICITY::substract
 (const MULTIPLICITY & b)
 {
 	int buf_count = 0;
 	int* buf_arr = NULL;
 
-	// переписываем массив с проверкой на повторение
+	// РїРµСЂРµРїРёСЃС‹РІР°РµРј РјР°СЃСЃРёРІ СЃ РїСЂРѕРІРµСЂРєРѕР№ РЅР° РїРѕРІС‚РѕСЂРµРЅРёРµ
 	for (int i = 0; i < this->count; i++)
 	{
 		bool match_found = false;
-		// если в текущем записанном массиве есть \
-				элемент такой же как мы планируем записать, \
-        то он будет пропущен
+		// РµСЃР»Рё РІ С‚РµРєСѓС‰РµРј Р·Р°РїРёСЃР°РЅРЅРѕРј РјР°СЃСЃРёРІРµ РµСЃС‚СЊ \
+				СЌР»РµРјРµРЅС‚ С‚Р°РєРѕР№ Р¶Рµ РєР°Рє РјС‹ РїР»Р°РЅРёСЂСѓРµРј Р·Р°РїРёСЃР°С‚СЊ, \
+        С‚Рѕ РѕРЅ Р±СѓРґРµС‚ РїСЂРѕРїСѓС‰РµРЅ
 		for (int j = 0; j < b.count; j++) {
 			if (this->mltplct[i] == b.mltplct[j])
 			{
 				match_found = true;
 			}				
 		}			
-		// если сходств не найдено, то записываем
+		// РµСЃР»Рё СЃС…РѕРґСЃС‚РІ РЅРµ РЅР°Р№РґРµРЅРѕ, С‚Рѕ Р·Р°РїРёСЃС‹РІР°РµРј
 		if (!match_found)
 		{
 			add_one_arr(buf_arr, buf_count);
@@ -72,30 +72,30 @@ MULTIPLICITY MULTIPLICITY::substract
 	delete[] buf_arr;
 	return A;
 }
-// объеденение
+// РѕР±СЉРµРґРµРЅРµРЅРёРµ
 MULTIPLICITY MULTIPLICITY::merge
 (const MULTIPLICITY & b)
 {
 
 	int buf_count = 0;
 	int* buf_arr = NULL;
-	// просто переписываем массив
+	// РїСЂРѕСЃС‚Рѕ РїРµСЂРµРїРёСЃС‹РІР°РµРј РјР°СЃСЃРёРІ
 	for (int i = 0; i < this->count; i++)
 	{
 		add_one_arr(buf_arr, buf_count);
 		buf_arr[buf_count - 1] = this->mltplct[i];
 	}
-    // переписываем массив с проверкой на повторение
+    // РїРµСЂРµРїРёСЃС‹РІР°РµРј РјР°СЃСЃРёРІ СЃ РїСЂРѕРІРµСЂРєРѕР№ РЅР° РїРѕРІС‚РѕСЂРµРЅРёРµ
 	for (int i = 0; i < b.count; i++) 
     {
 		bool match_found = false;
-		// если в текущем записанном массиве есть \
-		элемент такой же как мы планируем записать, \
-        то он будет пропущен
+		// РµСЃР»Рё РІ С‚РµРєСѓС‰РµРј Р·Р°РїРёСЃР°РЅРЅРѕРј РјР°СЃСЃРёРІРµ РµСЃС‚СЊ \
+		СЌР»РµРјРµРЅС‚ С‚Р°РєРѕР№ Р¶Рµ РєР°Рє РјС‹ РїР»Р°РЅРёСЂСѓРµРј Р·Р°РїРёСЃР°С‚СЊ, \
+        С‚Рѕ РѕРЅ Р±СѓРґРµС‚ РїСЂРѕРїСѓС‰РµРЅ
 		for (int j = 0; j < this->count; j++)
 			if (buf_arr[j] == b.mltplct[i])
 				match_found = true;
-		// если сходств не найдено, то записываем
+		// РµСЃР»Рё СЃС…РѕРґСЃС‚РІ РЅРµ РЅР°Р№РґРµРЅРѕ, С‚Рѕ Р·Р°РїРёСЃС‹РІР°РµРј
 		if (!match_found)
 		{
 			add_one_arr(buf_arr, buf_count);
@@ -106,11 +106,11 @@ MULTIPLICITY MULTIPLICITY::merge
 	delete[] buf_arr;
 	return A;
 }
-// симметрическая разность
+// СЃРёРјРјРµС‚СЂРёС‡РµСЃРєР°СЏ СЂР°Р·РЅРѕСЃС‚СЊ
 MULTIPLICITY MULTIPLICITY::symmetric_dif
 ( const MULTIPLICITY & b)
 {
-	// сим разность это тоже самое,что разность объеденения и пересения(собственно  тут это и написано)
+	// СЃРёРј СЂР°Р·РЅРѕСЃС‚СЊ СЌС‚Рѕ С‚РѕР¶Рµ СЃР°РјРѕРµ,С‡С‚Рѕ СЂР°Р·РЅРѕСЃС‚СЊ РѕР±СЉРµРґРµРЅРµРЅРёСЏ Рё РїРµСЂРµСЃРµРЅРёСЏ(СЃРѕР±СЃС‚РІРµРЅРЅРѕ  С‚СѓС‚ СЌС‚Рѕ Рё РЅР°РїРёСЃР°РЅРѕ)
 	MULTIPLICITY buf1 = this->merge(b);
 	MULTIPLICITY buf2 = this->intersection(b);
 	MULTIPLICITY A = buf1.substract(buf2);

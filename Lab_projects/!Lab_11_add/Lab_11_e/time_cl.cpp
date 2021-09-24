@@ -1,27 +1,27 @@
 #include "time_cl.h"
-// геттер	
+// РіРµС‚С‚РµСЂ	
 time_t TIME::getter()
 {
 	return this->sec;
 }
-// разность
+// СЂР°Р·РЅРѕСЃС‚СЊ
 TIME TIME::substract(TIME & other)
 {
 	tm t_other, t_this;	
 	t_other = *localtime(&other.sec);
 	t_this= *localtime(&this->sec);
 	TIME A;
-	// если первый больше по количеству часов, то отнимаем от него
+	// РµСЃР»Рё РїРµСЂРІС‹Р№ Р±РѕР»СЊС€Рµ РїРѕ РєРѕР»РёС‡РµСЃС‚РІСѓ С‡Р°СЃРѕРІ, С‚Рѕ РѕС‚РЅРёРјР°РµРј РѕС‚ РЅРµРіРѕ
 	if (t_other.tm_hour > t_this.tm_hour) 
 	{  
 		t_other.tm_hour -= t_this.tm_hour;
-		// если у него минут меньше
+		// РµСЃР»Рё Сѓ РЅРµРіРѕ РјРёРЅСѓС‚ РјРµРЅСЊС€Рµ
 		if (t_other.tm_min < t_this.tm_min) {
 			t_other.tm_hour--;
 			t_other.tm_min += 60;
 		}
 		t_other.tm_min -= t_this.tm_min;
-		// если у него меньше секунд
+		// РµСЃР»Рё Сѓ РЅРµРіРѕ РјРµРЅСЊС€Рµ СЃРµРєСѓРЅРґ
 		if (t_other.tm_sec < t_this.tm_sec) {
 			if (t_other.tm_min - 1 < 0) 
 			{
@@ -34,17 +34,17 @@ TIME TIME::substract(TIME & other)
 		t_other.tm_sec -= t_this.tm_sec;
 		A.sec = mktime(&t_other);
 	}
-	// если у второго больше по количеству часов, то отнимаем от него
+	// РµСЃР»Рё Сѓ РІС‚РѕСЂРѕРіРѕ Р±РѕР»СЊС€Рµ РїРѕ РєРѕР»РёС‡РµСЃС‚РІСѓ С‡Р°СЃРѕРІ, С‚Рѕ РѕС‚РЅРёРјР°РµРј РѕС‚ РЅРµРіРѕ
 	else 
 	{
 		t_this.tm_hour -= t_other.tm_hour;
-		// если у него минут меньше
+		// РµСЃР»Рё Сѓ РЅРµРіРѕ РјРёРЅСѓС‚ РјРµРЅСЊС€Рµ
 		if (t_other.tm_min > t_this.tm_min) {
 			t_this.tm_hour--;
 			t_this.tm_min += 60;
 		}
 		t_this.tm_min -= t_other.tm_min;
-		// если у него меньше секунд
+		// РµСЃР»Рё Сѓ РЅРµРіРѕ РјРµРЅСЊС€Рµ СЃРµРєСѓРЅРґ
 		if (t_this.tm_sec < t_other.tm_sec) {
 			if (t_this.tm_min - 1 < 0) {
 				t_this.tm_hour--;
@@ -58,7 +58,7 @@ TIME TIME::substract(TIME & other)
 	}
 	 return A;
 }
-// больше меньше
+// Р±РѕР»СЊС€Рµ РјРµРЅСЊС€Рµ
 bool TIME::is_bigger(const TIME & other)
 {
 	tm t_other, t_this;
@@ -68,7 +68,7 @@ bool TIME::is_bigger(const TIME & other)
 		t_other.tm_min < t_this.tm_min ? true : t_other.tm_min > t_this.tm_min ? false :\
 		t_other.tm_sec < t_this.tm_sec ? true : false;
 }
-// расчет угла
+// СЂР°СЃС‡РµС‚ СѓРіР»Р°
 double TIME::angle_calc()
 {
 	this->sec;
@@ -79,28 +79,28 @@ double TIME::angle_calc()
 	if (angle > 180)angle = 360 - angle;
 	return angle;
 }
-// перегрузка оператора вывода
+// РїРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° РІС‹РІРѕРґР°
 ostream& operator<< (ostream& out, TIME& a) 
 {
-	// TODO: вставьте здесь оператор return
+	// TODO: РІСЃС‚Р°РІСЊС‚Рµ Р·РґРµСЃСЊ РѕРїРµСЂР°С‚РѕСЂ return
 	tm timeinfo = *localtime(&a.sec);
 	cout << "hour -> " << timeinfo.tm_hour<< endl;
 	cout << "min -> " << timeinfo.tm_min<< endl;
 	cout << "sec -> " << timeinfo.tm_sec<< endl;
 	return out;
 }
-// перегрузка оператора ввода
+// РїРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° РІРІРѕРґР°
 istream& operator>> (istream & in, TIME & a) 
 {
 
 	tm timeinfo;
 	int h, m, s;
-	// используя структуру, меняем дату и время
+	// РёСЃРїРѕР»СЊР·СѓСЏ СЃС‚СЂСѓРєС‚СѓСЂСѓ, РјРµРЅСЏРµРј РґР°С‚Сѓ Рё РІСЂРµРјСЏ
 	time_t sec0 = a.sec;
 	time(&sec0);
 	timeinfo = *localtime(&a.sec);
 	bool err = true;
-	// цикл прального ввода часов
+	// С†РёРєР» РїСЂР°Р»СЊРЅРѕРіРѕ РІРІРѕРґР° С‡Р°СЃРѕРІ
 	while (err)
 	{
 		system("cls");
@@ -118,7 +118,7 @@ istream& operator>> (istream & in, TIME & a)
 		}
 	}
 	err = true;
-	// цикл прального ввода минут
+	// С†РёРєР» РїСЂР°Р»СЊРЅРѕРіРѕ РІРІРѕРґР° РјРёРЅСѓС‚
 	while (err)
 	{
 		system("cls");
@@ -136,7 +136,7 @@ istream& operator>> (istream & in, TIME & a)
 		}
 	}
 	err = true;
-	// цикл прального ввода секунд
+	// С†РёРєР» РїСЂР°Р»СЊРЅРѕРіРѕ РІРІРѕРґР° СЃРµРєСѓРЅРґ
 	while (err)
 	{
 		system("cls");
@@ -153,7 +153,7 @@ istream& operator>> (istream & in, TIME & a)
 			cout << "Error of sec entering" << endl;
 		}
 	}
-	// пользуясь функуцией эмкатайм() считаем количество секунд прошедших января 1900-го
+	// РїРѕР»СЊР·СѓСЏСЃСЊ С„СѓРЅРєСѓС†РёРµР№ СЌРјРєР°С‚Р°Р№Рј() СЃС‡РёС‚Р°РµРј РєРѕР»РёС‡РµСЃС‚РІРѕ СЃРµРєСѓРЅРґ РїСЂРѕС€РµРґС€РёС… СЏРЅРІР°СЂСЏ 1900-РіРѕ
 	a.sec = mktime(&timeinfo);
 	return in;
 }
