@@ -84,11 +84,6 @@ public:
 	friend istream& operator>> (istream & in, man_b & a);
     // Оператор []
     int operator[] (int & a);
-/*
-for
-size_str = man_b[i][size_str];
-
-*/
 	// Оператор ()
 	void operator() (const string &c, const short & q, const long long int &y, const double &m);
 	static void shapka();

@@ -26,7 +26,6 @@ Microsoft 	                   2 	               1048000000 	           13.1
 */
 int main()
 {
-	setlocale(0, "");
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 	int size = 3;
@@ -46,6 +45,7 @@ int main()
 		cout << "5- Перегрузка \">>\"" << endl;
 		cout << "6- Выход" << endl;
 		cin >> Case;
+		if (cin.fail())break;
 		system("cls");
 		switch (Case)
 		{
