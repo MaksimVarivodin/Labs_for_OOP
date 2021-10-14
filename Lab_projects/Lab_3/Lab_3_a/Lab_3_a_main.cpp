@@ -12,8 +12,5 @@ int main() {
 	cout << "Class SpanielD" << endl;
 	cout << b;
 	b.golos();
-	a.~DOG();
-	b.~SpanielD();
-	
 	system("pause");
 }

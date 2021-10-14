@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{21FF6145-4136-4E1A-B160-BEDE5F2011BC}</ProjectGuid>
-    <RootNamespace>Lab_3_b</RootNamespace>
+    <ProjectGuid>{13067CFD-A4B2-42F2-810A-A03E7F6EEB54}</ProjectGuid>
+    <RootNamespace>Lab_3_e</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -118,11 +118,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Lab_3_b_main.cpp" />
-    <ClCompile Include="lib_cl.cpp" />
+    <ClInclude Include="main_h.h" />
+    <ClInclude Include="pers_cl.h" />
+    <ClInclude Include="prep_cl.h" />
+    <ClInclude Include="stud_cl.h" />
+    <ClInclude Include="vuz_cl.h" />
+    <ClInclude Include="zav_cl.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="lib_cl.h" />
+    <ClCompile Include="Lab_3_e_main.cpp" />
+    <ClCompile Include="pers_cl.cpp" />
+    <ClCompile Include="prep_cl.cpp" />
+    <ClCompile Include="stud_cl.cpp" />
+    <ClCompile Include="vuz_cl.cpp" />
+    <ClCompile Include="zav_cl.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

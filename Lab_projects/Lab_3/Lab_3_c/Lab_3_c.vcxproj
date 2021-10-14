@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{21FF6145-4136-4E1A-B160-BEDE5F2011BC}</ProjectGuid>
-    <RootNamespace>Lab_3_b</RootNamespace>
+    <ProjectGuid>{CEB0CE77-3EB8-4479-A35B-AC6F873C2E90}</ProjectGuid>
+    <RootNamespace>Lab_3_c</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -118,11 +118,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Lab_3_b_main.cpp" />
-    <ClCompile Include="lib_cl.cpp" />
+    <ClInclude Include="filt_cl.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="lib_cl.h" />
+    <ClCompile Include="filt_cl.cpp" />
+    <ClCompile Include="Lab_3_c_main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
