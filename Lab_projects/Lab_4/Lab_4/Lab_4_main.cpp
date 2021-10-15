@@ -99,7 +99,9 @@ int main()
 			break;
 		}
 		if (Case == 9)
+		{
+			system("pause");
 			break;
+		}
 	}
-	system("pause");
 }
