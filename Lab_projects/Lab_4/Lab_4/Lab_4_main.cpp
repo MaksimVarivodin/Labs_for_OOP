@@ -14,17 +14,6 @@
 Потоковый ввод;
 Потоковый вывод.
 */
-
-// Example:
-/*
-
-
-
-Oracle                         1 	               2488000000 	           31.1
-IBM 	                       3 	               2392000000 	           29.9
-Microsoft 	                   2 	               1048000000 	           13.1
-Примечание: по данным Gartner Group за 1999г
-*/
 int main()
 {
 	SetConsoleCP(1251);
@@ -62,7 +51,6 @@ int main()
 			system("pause");
 			system("cls");
 			break;
-
 		case 3:
 			cout << "Перегрузка \"+\"" << endl;
 			a.resize();
