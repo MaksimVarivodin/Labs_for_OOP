@@ -58,8 +58,7 @@ void Vuz::print()
 		cout << "Кто: ";
 		switch (Shtat[i]->who()) {
 		case 1:
-			cout << "Преподаватель";
-			
+			cout << "Преподаватель";			
 			break;
 		case 2:			
 			cout << "Зав_каф";

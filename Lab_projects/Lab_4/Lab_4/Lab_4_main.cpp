@@ -30,7 +30,8 @@ int main()
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 	COMPANY a;
-	int Case = 0;
+
+	int Case = 0,num = 0 ;
 	for (;;) {
 		cout << "Выберите метод:" << endl;
 		cout << "1- Вывод" << endl;
@@ -38,7 +39,10 @@ int main()
 		cout << "3- Перегрузка \"+\"" << endl;
 		cout << "4- Перегрузка \"==\"" << endl;
 		cout << "5- Перегрузка \">>\"" << endl;
-		cout << "6- Выход" << endl;
+		cout << "6- Вывод элемента массива по введеноому индексу" << endl;
+		cout << "7- Удаление последнего" << endl;
+		cout << "8- Сортировка" << endl;
+		cout << "9- Выход" << endl;
 		cin >> Case;
 		if (cin.fail())break;
 		system("cls");
@@ -83,8 +87,30 @@ int main()
 			system("pause");
 			system("cls");
 			break;
+		case 6:
+			cout << "Вывод элемента массива по введеноому индексу" << endl;		
+			cin >> num;
+			cout << a[num];
+			system("pause");
+			system("cls");
+			break;
+		case 7:
+			cout << "Удаление последнего" << endl;
+			a.del();
+			a.print();
+			cout << "Удалено" << endl;
+			system("pause");
+			system("cls");
+			break;
+		case 8:
+			cout << "Сортировка" << endl;
+			a.sort();
+			a.print();
+			system("pause");
+			system("cls");
+			break;
 		}
-		if (Case == 6)
+		if (Case == 9)
 			break;
 	}
 	system("pause");

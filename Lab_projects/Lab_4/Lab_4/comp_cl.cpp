@@ -37,6 +37,29 @@ void COMPANY::resize() {
 	size++;
 	new_a = nullptr;
 }
+void COMPANY::del() {
+	MANUFACTURER* new_a = new MANUFACTURER[size - 1];
+	if (size > 0) {
+		for (int i = 0; i < size - 1; i++)
+			new_a[i] = arr[i];
+	}
+	delete[]arr;
+	arr = new_a;
+	size--;
+	new_a = nullptr;
+}
+
+void COMPANY::sort()
+{
+	for (int i = 0; i < size; i++) {
+		for (int j = i; j > 0 && arr[j - 1].GetCompany()> arr[j].GetCompany(); j--) {
+			MANUFACTURER buf = arr[j - 1];
+			arr[j - 1] = arr[j];
+			arr[j] = buf;
+		}
+	}
+}
+
 void COMPANY::print()
 {
 	shapka();
