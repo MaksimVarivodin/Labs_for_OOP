@@ -44,10 +44,12 @@ class Country {
 	int population;
 	int area;
 	public:
-	Country(){name = "";
+	Country(){
+		name = "";
 		capital = "";
 		population = 0;
-		area = 0;}
+		area = 0;
+	}
 	string GETname() {
 		return name;
 	}

@@ -59,12 +59,12 @@ int main() {
 			break;
 		case 3:
 			cout << "¬ведите количество населени€: " << endl;
-			Enter_check(population);
+			Enter_check(population, 1000000);
 			World[ent](World[ent].GETname(), World[ent].GETcapital(), population, World[ent].GETarea());
 			break;
 		case 4: 
 			cout << "¬ведите площадь територии: " << endl;
-			Enter_check(area, 1000000);
+			Enter_check(area);
 			World[ent](World[ent].GETname(), World[ent].GETcapital(), World[ent].GETpopulation(), area);
 
 			break;
