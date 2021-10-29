@@ -45,6 +45,5 @@ public:
 		line = a;
 	}
 	void show();
-	void write(const string & p = "string.txt");
-	
+	void write(const string & p = "string.txt");	
 };

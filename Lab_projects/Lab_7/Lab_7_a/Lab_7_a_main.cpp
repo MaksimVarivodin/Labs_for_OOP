@@ -10,7 +10,7 @@ int main() {
 		Comp::print();
 		cout << endl;
 		Comp::write();
-		remove("real_numbs.txt");
+		//remove("real_numbs.txt");
 		Comp::clean();
 		int size = 3;
 		cout << endl;
