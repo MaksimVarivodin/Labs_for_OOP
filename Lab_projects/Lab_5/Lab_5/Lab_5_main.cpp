@@ -107,52 +107,34 @@ void resize(T*& a, int &b){
 	n = nullptr;
 }
 void hexer(string x) {
-	bool end = true;
 	string buf = "";
 	for each (char var in x)
 	{
-		bool conv = false;
-		try
-		{
-			int a = var;
-			conv = true;
-		}
-		catch (const std::exception&)
-		{
 
-		}
-		if(!(::isalpha(var)) && var !=  ' ' && conv) {
-			end = false;
+		if (isdigit(var)== 4) {
+			//cout << isdigit(var);
 			buf += var;
-			if (var == x[x.length() - 1]) {
-				try
-				{
-					cout << hex << stoi(buf);
-				}
-				catch (const exception&)
-				{
-					cout << var;
-				}
+			if(var == x[x.length() - 1])
+			try
+			{
+				cout << hex << stoi(buf);
 			}
-			
-			
-		}		 
-		else { 
-		if (!end) {
-		        if (buf.length()>0) {
-					try
-					{
-						cout << hex << stoi(buf);
-					}
-					catch (const exception&)
-					{
-						cout << buf;
-					}
-				}
-				buf = "";
-				end = true;
+			catch (const std::exception&)
+			{
+				cout << "";
 			}
-		cout << var; 
+		}
+		else {
+			try
+			{
+				cout << hex << stoi(buf);
+			}
+			catch (const std::exception&)
+			{
+				cout << "";
+			}			
+			buf = "";
+			cout << var;
 		}
 	}
 }
@@ -180,7 +162,7 @@ void fill(string x, char & filler) {
 int main() {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-	string a;
+	string a = "";
 	cout << "¬ведите строку: ";
 	getline(cin, a);
 	string *menu = new string[6]{
@@ -211,7 +193,7 @@ int main() {
 			cout << "¬ведите символ-филлер: ";
 			cin >> symbol_filler;
 			cout << "Initial line:\n" << a << endl;
-			cout << "Result line:\n" << endl;
+			cout << "Result line:\n";
 			fill(a, symbol_filler);
 			break;
 		}
