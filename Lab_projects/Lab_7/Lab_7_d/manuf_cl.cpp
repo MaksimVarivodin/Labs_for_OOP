@@ -26,6 +26,7 @@ int Enter_check(int & a, const int & max, const int & min)
 		}
 	}
 }
+
 void Ñ_gray(const string & a)
 {
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);

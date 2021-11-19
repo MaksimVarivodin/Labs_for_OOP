@@ -18,3 +18,10 @@ Lab_projects/Lab_11_add/.vs/Lab_11_add/v14/.suo
 *.enc
 *.user
 *.cache
+*.db
+*.json
+*.ipch
+*.sqlite
+*.opendb
+*.db-shm
+*.db-wal

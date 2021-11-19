@@ -178,7 +178,7 @@ template<class T>
 inline T Arr<T>::s()
 {
 	T S = 0;
-	for (int i = 0; i <= ind; i++) {
+	for (int i = 0; i < ind; i++) {
 		S += arr[i];
 	}
 	return S;
@@ -194,7 +194,7 @@ template<class T>
 inline T Arr<T>::operator[](int & ind)
 {
 	T max = -100.0;
-	for (int i = 0; i <= ind; i++) {
+	for (int i = 0; i < ind; i++) {
 		if (max < arr[i]) { max = arr[i]; }
 	}
 	return max;

@@ -2,8 +2,15 @@ template<class T>
 inline Num<T> Num<T>::operator/(Num<T>& a)
 {
 	// TODO: insert return statement here
-	Num<T> buf;
+	Num<T> buf{this->num};
+	try{
+	if(a.num == 0) throw a;
 	buf.num = this->num / a.num;
+	}
+	catch(T a){
+	cout << "Error:  Деление на ноль."<< endl;	
+	}
+	
 	return buf;
 }
 
