@@ -22,12 +22,6 @@
 #include <conio.h>
 #include <map>
 using namespace std;
-void Enter_check(string & a) {
-	string b;
-	getline(cin, b);
-	a = b;
-}
-
 enum ConsoleColor
 {
 	Black = 0,
