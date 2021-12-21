@@ -25,3 +25,6 @@ Lab_projects/Lab_11_add/.vs/Lab_11_add/v14/.suo
 *.opendb
 *.db-shm
 *.db-wal
+*.dll
+*.iobj
+*.sln
