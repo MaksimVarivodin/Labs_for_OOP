@@ -25,8 +25,6 @@ bool Diary::read(const wstring & path)
 {
     wofstream out;
 	wifstream in;
-	out.open(path, ios::binary | ios::out);
-	out.close();
 	in.open(path, ios::binary | ios::in);
 	in.imbue(locale(in.getloc(), new codecvt_utf8_utf16<wchar_t>));
 	try {
@@ -136,8 +134,8 @@ bool Diary::use()
 		}
 
 		if (Keyboard::isKeyPressed(Keyboard::F) && ctrlPressed) {
-			//thr1.launch();
-			//thr2.launch();
+			thr_search1.launch();
+			thr_search2.launch();
 			sleep(milliseconds(50));
 		}
 		keys();
@@ -183,71 +181,64 @@ void Diary::search1()
 	}
 }
 
-void Diary::search2(RenderWindow & a)
+void Diary::search2()
 {
-	RenderWindow app(sf::VideoMode(1000, 800), L"Diary");
+	RenderWindow app(sf::VideoMode(1000, 800), L"Search_results");
 	app.setVerticalSyncEnabled(true);
 	app.setFramerateLimit(120); //своя кадровая частота
 	app.setVisible(true);
-	wstring buf = L"Вводите и меняйте строки:";
-	String* text = new String[5]{
-	buf, L"Доступны команды :", L"Esc", L"Del",L"Enter"
-	};
-
+	vector<Page>buf = sheets;
 
 	// Перемещаем его в нижний ряд справа от многоугольника
 
 	Scroller v;
-
+	int iterZ = iter;
 	while (app.isOpen())
 	{
 
 		//		rectangle.move(view.getCenter().x, view.getCenter().y);
-
-		Event event;
+		wstring buffer = seeked_word;
+		Event event; 
 		bool cont = true;
 
 		while (app.pollEvent(event))
 		{
-			sheets[iter].MouseWheel(event);
-			bool ctrlPressed = Keyboard::isKeyPressed(Keyboard::LControl) || Keyboard::isKeyPressed(Keyboard::RControl);
-			if (!ctrlPressed) {
-				if (event.type == Event::TextEntered)
-				{
-					cont = event.text.unicode >> sheets[iter];
-				}
-			}    /**/
+			buf[iterZ].MouseWheel(event);
+			  /**/
 	/**/
 
 				// Close window : exit
 			if (event.type == sf::Event::Closed || !cont)
 			{
-				delete[] text;
 				app.close();
 			}
 		}
 		font.loadFromFile("Ariadna script\\ariadnascript.ttf");
 		RectangleShape rectangle(Vector2f(0, 0));
 
+		
+		app.clear(Color::White);
 		int max = 0, startYpos = 20, startXpos = 20, posY = 20, posX = 20;
-		for (int i = 0; i < sheets[iter].txt.size(); i++) {
-			sheets[iter].txt[i].setScale(0.65);
-			for (int j = 0; j < sheets[iter].txt[i].l.size(); j++) {
-				sheets[iter].txt[i].setPosition(sheets[iter].txt[i].l[j], posY);
-				if (0 == sheets[iter].txt[i].l[j].getString().find(seeked_word) || sheets[iter].txt[i].l[j].getString().find(seeked_word) < sheets[iter].txt[i].l[j].getString().getSize()) {
-					sheets[iter].txt[i].setRectangle(rectangle, sheets[iter].txt[i].l[j]);
-					rectangle.setFillColor(Color::Red);
-					a.draw(rectangle);
+		for (int i = 0; i < buf[iterZ].txt.size(); i++) {
+			buf[iterZ].txt[i].setScale(0.65);
+			for (int j = 0; j < buf[iterZ].txt[i].l.size(); j++) {
+				buf[iterZ].txt[i].setPosition(buf[iterZ].txt[i].l[j], posY);
+				wstring buf1 = buf[iterZ].txt[i].l[j].getString();
+				if (buf1.find(buffer) != wstring::npos && buffer!= L"") {
+					buf[iterZ].txt[i].setRectangle(rectangle, buf[iterZ].txt[i].l[j]);
+					rectangle.setOutlineColor(Color::Red);
+					app.draw(rectangle);
 				}
-				a.draw(sheets[iter].txt[i].l[j]);
+				app.draw(buf[iterZ].txt[i].l[j]);
 			}
-			sheets[iter].txt[i].SetPosX(startXpos);
+			buf[iterZ].txt[i].SetPosX(startXpos);
 			posY += 0.65 * 100;
 		}
-		app.clear(Color::White);
-		sheets[iter].UpDownLeftRight();
+			
+		//buf[iterZ].UpDownLeftRight();
+		v.setArrowAble(true);
 		v.UpDownLeftRight();
-		Vector2i bufferEnd(sheets[iter].show(app), sheets[iter].return_Y_size());
+		Vector2i bufferEnd(2000, startYpos + buf[iterZ].txt.size()* 0.65 * 100);
 		v.setEndPos(bufferEnd);
 		v.show(app);
 		app.display();

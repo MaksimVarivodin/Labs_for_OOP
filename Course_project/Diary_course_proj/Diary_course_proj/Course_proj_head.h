@@ -36,6 +36,7 @@ public:
 	Line(const String &a) {
 		this->setString(a);
 	}
+	Line& operator=(Line & other);
 	friend bool operator>>(Uint32 a, Line & b);
 	bool change_word(const Uint32& a, int & iter);
 	int show(RenderWindow & a, const int & posY);
@@ -58,6 +59,7 @@ public:
 	}
 };
 class Page {
+protected:
 	time_t seconds = 0;
 	float scale = 0.65;
 	int posY = 20;
@@ -76,7 +78,8 @@ class Page {
 	void del_line();
 	int edit(RenderWindow&);
 	
-public:		
+public:	
+
 	vector<Line> txt;
 	Page() {
 	}
@@ -106,6 +109,7 @@ public:
 	void read(wifstream & in, const wstring & path);
 	friend String Res_str(const String &a, int size, int  pos , const int & to_del );
 	friend bool operator>>(Uint32 a, Page& b );
+	Page& operator=(Page& other);
 	void setRecEnable(const bool &a) { recEnabled = a; }
 	bool getRecEnable() { return recEnabled; }
 	void setEditingMode(bool a) { EditingMode = a; }
@@ -118,15 +122,17 @@ public:
 class Searchbox: public Page{
 	int size = 0;
 public:
-	Searchbox()
+	Searchbox():Page::Page()
 	{
-
+		txt.resize(1);
 	}
 	friend bool operator>>(Uint32 a, Page& b);
 	bool add_el(Uint32 a) {
+		
 		if (size < 460)
-			if(a >> *this)return true;
-			else return false;
+		if (a >> *this)return true;
+		else if (txt.size() > 1) { del_line(); return false; }
+		else return false;
 	}
 	bool show(RenderWindow&);
 };

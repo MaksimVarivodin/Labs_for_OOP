@@ -80,6 +80,11 @@ bool Line::del_word(const int & i)
 	}		
 	else return false;
 }
+Line & Line::operator=(Line & other)
+{
+	this -> l = other.l;
+	return *this;
+}
 bool Line::change_word(const Uint32& a, int & iter)
 {
 	if(l.size()<=0)
@@ -394,6 +399,11 @@ void Page::read(wifstream &in, const wstring & path)
 		for (int i = 0; i < txt.size(); i++)
 			txt[i].read(in, path);
 	
+}
+Page & Page::operator=(Page & other)
+{
+	this->txt = other.txt;
+	return *this;
 }
 bool Searchbox::show(RenderWindow &a)
 {

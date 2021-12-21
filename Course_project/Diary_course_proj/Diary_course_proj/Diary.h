@@ -21,12 +21,14 @@ class Diary : public dInterface
 	Font font;
 	int iter = 0;
 	wstring seeked_word;
+	Thread thr_search1;
+	Thread thr_search2;
 public:
 	void write(const wstring &path) override;// сохранить
 	bool read(const wstring & path) override;// считать
 	bool use() override;// использовать
 	void search1() override;// искать
-	void search2(RenderWindow &);
+	void search2();
 	void keys() override;// кнопки
 	void prev() override;// предыдущий
 	void next() override;// следующий
@@ -35,8 +37,9 @@ public:
 		read(path0);
 		path = path0;
 	}*/
-	Diary() {
+	Diary():thr_search1(&Diary::search1, this), thr_search2(&Diary::search2, this) {
 		path = L"data.bin";
 		sheets.resize(1);
+		seeked_word = L"";
 	}
 };
